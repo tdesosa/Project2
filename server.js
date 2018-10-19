@@ -14,7 +14,7 @@ require('./db/db');
 // REQUIRE CONTROLLERS
 
 // const authController  = require('./controllers/authController');
-// const usersController  = require('./controllers/usersController');
+const usersController  = require('./controllers/usersController');
 // const barbersController = require('./controllers/barbersController');
 
 // MIDDLEWARE SETUP
@@ -29,7 +29,7 @@ require('./db/db');
 // app.use(methodOverride('_method'));
 
 // app.use('/auth', authController);
-// app.use('/users', usersController);
+app.use('/users', usersController);
 // app.use('/barbers', barbersController);
 
 // LANDING PAGE
