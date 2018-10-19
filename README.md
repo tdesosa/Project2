@@ -17,13 +17,13 @@ USER STORY (MVP):
 
 TECHNOLOGIES USED:
 
-Node
-Express
-Mongoose
-MongoDB
-Bootstrap
-Express Session
-EJS
+- Node
+- Express
+- Mongoose
+- MongoDB
+- Bootstrap
+- Express Session
+- EJS
 
 
 BONUS:
