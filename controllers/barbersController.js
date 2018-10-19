@@ -64,7 +64,7 @@ router.get('/:id/edit', async (req, res, nex) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const newBarber = await Barber.crete(req.body);
+        const newBarber = await Barber.create(req.body);
 
         res.redirect('/barbers');
     } catch (err) {

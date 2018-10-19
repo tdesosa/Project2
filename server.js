@@ -25,8 +25,8 @@ const barbersController = require('./controllers/barbersController');
 //     saveUninitialized: false
 // }));
 
-// app.use(bodyParser.urlencoded({extended: false}));
-// app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 
 // app.use('/auth', authController);
 app.use('/users', usersController);

@@ -7,6 +7,26 @@
     <title>USERS NEW PAGE</title>
 </head>
 <body>
-    <h1>Users New Page:</h1>
+
+    <header>
+        <h1>Users New Page:</h1>
+
+        <nav>
+            <ul>
+                <li><a href='/'>Return To Homepage</a></li>
+                <li><a href='/users'>Users Index</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <form action="/users" method="POST">
+            Username: <input type="text" name="username" value="username">
+            Password: <input type="password" name="password" value="password">
+            <button type="submit">Add User</button>
+        </form>
+    </main>
+    
 </body>
 </html>
