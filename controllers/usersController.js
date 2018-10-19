@@ -12,7 +12,16 @@ const Barber = require('../models/barberModel')
 const router  = express.Router();
 
 // INDEX ROUTE
-
+router.get("/", async (req, res, next) => {
+    try{
+        const foundUsers = await User.find({});
+            res.render("users/index.ejs", {
+                users:foundUsers
+            })
+    } catch(err) {
+        next(err)
+    }
+});
 // NEW ROUTE
 
 // SHOW ROUTE
@@ -27,6 +36,6 @@ const router  = express.Router();
 
 // EXPORT ROUTER
 
-module.export = router;
+module.exports = router;
 
 
