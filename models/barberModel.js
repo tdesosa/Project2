@@ -2,6 +2,11 @@
 
 const mongoose = require('mongoose');
 
+// REQUIRE USER MODEL
+
+const User = require('./userModel')
+
+
 // BARBER SCHEMA
 
 const barberSchema = new mongoose.Schema({
@@ -11,7 +16,7 @@ const barberSchema = new mongoose.Schema({
     phoneNumber: String,
     city: String,
     seatStaus: Boolean,
-    // users:
+    // users: {type: mongoose.schema.Title.ObjectID, required: "User"}
 });
 
 // EXPORT BARBER SCHEMA

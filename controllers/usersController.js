@@ -12,18 +12,20 @@ const Barber = require('../models/barberModel')
 const router  = express.Router();
 
 // INDEX ROUTE
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try{
-        const foundUsers = await User.find({});
-            res.render("users/index.ejs", {
-                users:foundUsers
-            })
-    } catch(err) {
+        const foundUsers = await User.find();
+
+        res.render("users/index.ejs", {
+            users: foundUsers
+        });
+    }catch (err) {
         next(err)
     }
 });
+
 // NEW ROUTE
-router.get('/new', (req, res)=>{
+router.get('/new', (req, res, next)=>{
     res.render('users/new.ejs');
 });
 
@@ -55,6 +57,7 @@ router.get('/:id/edit', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
+        
         res.redirect('/users');
     } catch (err) {
         next(err);
@@ -74,7 +77,7 @@ router.put('/:id', async (req, res, next) => {
 // DELETE ROUTE
 router.delete('/:id', async (req, res) => {
     try {
-        const deltedUser = await User.findByIdAndDelete(req.params.id);
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
         res.redirect('/users');
     } catch (err) {
         next (err);
