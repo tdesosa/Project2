@@ -4,13 +4,11 @@ const mongoose = require('mongoose');
 
 // SET CONNECTION STRING & NAME DB IN MONGO
 
-const connectionString = 'mongodb://localhost/sportsapp';
+const connectionString = 'mongodb://localhost/barbersapp';
 
 // CONNECTTION TO MONGO VIA MONGOOSE
 
 mongoose.connect(connectionString, {useNewUrlParser: true});
-
-// MONGOOSE CONNECTION MESSAGES
 
 mongoose.connection.on('connected', () => {
     console.log(`MONGOOSE CONNECTED AT ${connectionString}`);
