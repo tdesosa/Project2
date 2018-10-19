@@ -6,7 +6,7 @@ This application was developed to solve the problem of not knowing when your Bar
 
 USER STORY (MVP):
 
-1)There will be 2 models, User and Barbers.
+1) There will be 2 models, User and Barbers.
 
 2) User will be able to log in to the Barber App, have an encrypted password, and authorization flow.
 
