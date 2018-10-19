@@ -7,6 +7,35 @@
     <title>USERS SHOW PAGE</title>
 </head>
 <body>
-    <h1>Users Show Page:</h1>
+
+    <header>
+    </header>
+
+    <main>
+        <h1>Users Show Page:</h1>
+        
+        <ul>
+            <li>Username: <%= user.username %></li>
+            <li>Password: <%= user.password %></li>
+            <li>Barbers: <%= user.barbers %></li>
+        </ul>
+
+        <form action='/users/<%=user._id%>?_method=DELETE' method="POST">
+            <input type="submit" value='Delete User'>
+        </form>
+
+        <button>
+            <a href='/users/<%=user._id%>/edit'>Edit User</a>
+        </button>
+
+        <nav>
+            <ul>
+                <li><a href='/'>Return To Homepage</a></li>
+                <li><a href='/users'>Users Index</a></li>
+            </ul>
+        </nav>
+
+    </main>
+    
 </body>
 </html>
