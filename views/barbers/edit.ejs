@@ -7,6 +7,32 @@
     <title>BARBERS EDIT PAGE</title>
 </head>
 <body>
-    <h1>Barbers Edit Page:</h1>
+
+    <header>
+    </header>
+
+    <main>
+        <h1>Barber Attributes:</h1>
+
+        <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
+            Username:<input type="text" name="username" value="<%=barber.username%>">
+            Password:<input type="text" name="password" value="<%=barber.password%>">
+            <!-- Users:<input type="text" name="users" value="<%=barber.users%>"> -->
+        <button type="submit">Update User</button>
+        </form>
+
+        <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >
+            <input type="submit" value="Delete User">
+        </form>
+
+        <nav>
+            <ul>
+                <li><a href='/'>Return To Homepage</a></li>
+                <li><a href='/barbers'>Barbers Index</a></li>
+            </ul>
+        </nav>
+
+    </main>
+    
 </body>
 </html>

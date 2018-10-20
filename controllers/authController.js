@@ -21,4 +21,4 @@ const router  = express.Router();
 
 // EXPORT ROUTER
 
-module.export = router;
+module.exports = router;

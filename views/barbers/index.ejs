@@ -7,8 +7,29 @@
     <title>BARBERS INDEX PAGE</title>
 </head>
 <body>
+
+    <header>
     <h1>Barbers Index Page:</h1>
+
+    <nav>
+        <ul>
+            <li><a href='/'>Return To Homepage</a></li>
+            <li><a href='/barbers/new'>Create A New Barber</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <main>
+        <h1>Barbers:</h1>
+        <ul>
+            <% for(let i = 0; i < barbers.length; i++) { %>
+                <li>
+                    <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
+                </li>
+            <% } %>
+        </ul>   
+    </main> 
+    
 </body>
 </html>
-
 

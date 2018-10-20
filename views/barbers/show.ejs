@@ -7,6 +7,35 @@
     <title>BARBERS SHOW PAGE</title>
 </head>
 <body>
-    <h1>Barbers Show Page:</h1>
+
+    <header>
+    </header>
+
+    <main>
+        <h1>Barbers Show Page:</h1>
+        
+        <ul>
+            <li>Username: <%= barber.username %></li>
+            <li>Password: <%= barber.password %></li>
+            <!-- <li>Users: <%= barber.users %></li> -->
+        </ul>
+
+        <form action='/barbers/<%=barber._id%>?_method=DELETE' method="POST">
+            <input type="submit" value='Delete Barber'>
+        </form>
+
+        <button>
+            <a href='/barbers/<%=barber._id%>/edit'>Edit Barber</a>
+        </button>
+
+        <nav>
+            <ul>
+                <li><a href='/'>Return To Homepage</a></li>
+                <li><a href='/barbers'>Barbers Index</a></li>
+            </ul>
+        </nav>
+
+    </main>
+    
 </body>
 </html>
