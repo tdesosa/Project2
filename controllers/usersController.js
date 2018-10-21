@@ -56,13 +56,16 @@ router.get('/:id/edit', async (req, res, next) => {
 // CREATE ROUTE
 router.post('/', async (req, res, next) => {
     try {
+        const newBarber = await Barber.findById(req.body.barberId)
         const newUser = await User.create(req.body);
-        
+        newUser.barbers.push(newBarber);
+        await newUser.save();
         res.redirect('/users');
     } catch (err) {
         next(err);
     }
 });
+
 
 // UPDATE ROUTE
 router.put('/:id', async (req, res, next) => {

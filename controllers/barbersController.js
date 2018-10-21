@@ -5,7 +5,7 @@ const express = require('express');
 // REQUIRE MODELS
 
 const Barber = require('../models/barberModel')
-// const User = require('../models/userModel')
+const User = require('../models/userModel')
 
 // EXPRESS ROUTER METHOD
 
@@ -27,8 +27,10 @@ router.get('/', async (req, res, next) => {
 
 // NEW ROUTE
 
-router.get('/new', (req, res, next) => {
+router.get('/new', async (req, res, next) => {
+    const foundUser = await User.find({});
     res.render('barbers/new.ejs', {
+        user: foundUser
     });
 });
 
@@ -37,9 +39,11 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const foundBarber = await Barber.findById(req.params.id);
+        const foundUser = await User.findOne({"barbers._id": req.params.id});
 
         res.render('barbers/show.ejs', {
-            barber: foundBarber
+            barber: foundBarber,
+            user: foundUser
         });
     } catch (err) {
         next(err);
@@ -64,8 +68,10 @@ router.get('/:id/edit', async (req, res, nex) => {
 
 router.post('/', async (req, res, next) => {
     try {
+        const newUser = await User.findById(req.body.userId)
         const newBarber = await Barber.create(req.body);
-
+        newUser.barbers.push(newBarber);
+        await newBarber.save();
         res.redirect('/barbers');
     } catch (err) {
         next(err);
@@ -84,17 +90,55 @@ router.put('/:id', async (req, res, next) => {
     }
 });
 
+
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const newUser = await User.findOne({'_id': req.body.userId});
+//         const barber = await Barber.findById(req.params.id);
+//         const oldUser = await User.findOne({'barbers._id': barbers._id})
+//         await Barber.findByIdAndUpdate(req.params.id, req.body);
+//         for (let i = 0; i < oldUser.barbers.length; i++){
+//             if (`${oldUser.barbers[i]._id}` === `${barbers._id}`){
+//                 await oldUser.barbers.splice(i, 1);
+//             }
+//         }
+//         newUser.barbers.push(barber);
+//         await newUser.save();
+//         await oldUser.save();
+//         res.redirect(`/barbers/${req.params.id}`)
+//     } catch (err){
+//         res.send(err);
+//     }
+// });
+
 // DELETE ROUTE
 
 router.delete('/:id', async (req, res, next) => {
     try {
+        //const user = await User.findOne({'barbers._id': req.params.id});
+        const barber = await Barber.findById(req.params.id);
+        //user.id(req.params.id).remove();
         const deletedBarber = await Barber.findByIdAndDelete(req.params.id);
-
+        //console.log(foundUser);
+        // await user.save();
         res.redirect('/barbers');
     } catch (err) {
         next(err);
     }
 });
+
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const user = await User.findOne({'photos._id': req.params.id});
+//         const photo = await Photo.findById(req.params.id);
+//         user.photos.id(req.params.id).remove();
+//         await Photo.findByIdAndDelete(req.params.id);
+//         await user.save();
+//         res.redirect('/photos');
+//     } catch(err){
+//         res.send(err);
+//     }
+// })
 
 // EXPORT ROUTER
 
