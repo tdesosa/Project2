@@ -12,16 +12,17 @@
     </header>
 
     <main>
-        <h1>Users Edit Page:</h1>
-        
-        <ul>
-            <li>Username: <%= user.username %></li>
-            <li>Password: <%= user.password %></li>
-            <li>Barbers: <%= user.barbers %></li>
-        </ul>
+        <h1>User Attributes:</h1>
 
-        <form action='/users/<%=user._id%>?_method=DELETE' method="POST">
-            <input type="submit" value='Delete User'>
+        <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+            Username:<input type="text" name="username" value="<%=user.username%>">
+            Password:<input type="text" name="password" value="<%=user.password%>">
+            Barbers:<input type="text" name="barbers" value="<%=user.barbers%>">
+        <button type="submit">Update User</button>
+        </form>
+
+        <form action="/users/<%=user._id%>?_method=DELETE" method="POST" >
+            <input type="submit" value="Delete User">
         </form>
 
         <nav>
