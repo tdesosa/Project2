@@ -17,8 +17,12 @@
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>">
-            <!-- Users:<input type="text" name="users" value="<%=barber.users%>"> -->
-        <button type="submit">Update User</button>
+            Customers: <select name="userId">
+                            <% for(i = 0; i < user.length; i++) { %>
+                                <option value="<%= user[i]._id %>"><%=user[i].username%></option>
+                            <% } %>
+                        </select> <br>
+        <button type="submit">Update Barber</button>
         </form>
 
         <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >

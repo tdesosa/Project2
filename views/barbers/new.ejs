@@ -24,7 +24,13 @@
         <form action="/barbers" method="POST">
             Username: <input type="text" name="username" value="username">
             Password: <input type="password" name="password" value="password">
+            Customers: <select name="userId">
+                <% for(i = 0; i < user.length; i++) { %>
+                    <option value="<%= user[i]._id %>"><%=user[i].username%></option>
+                <% } %>
+            </select> <br>
             <button type="submit">Add Barber</button>
+
         </form>
     </main>
     
