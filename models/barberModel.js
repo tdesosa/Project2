@@ -17,7 +17,6 @@ const barberSchema = new mongoose.Schema({
     // city: String,
     seatStaus: Boolean,
     // users: {type: mongoose.Schema.Types.ObjectId, required: "User"}
-
 });
 
 // EXPORT BARBER SCHEMA
