@@ -27,7 +27,10 @@
                     <a href='/users/<%=users[i].id%>'><%= users[i].username %></a>
                 </li>
             <% } %>
-        </ul>   
+        </ul>  
+        <form action="/auth/logout" method="GET" >
+            <input type="submit" value="Logout">
+        </form> 
     </main> 
     
 </body>
