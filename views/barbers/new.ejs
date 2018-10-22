@@ -22,13 +22,13 @@
 
     <main>
         <form action="/barbers" method="POST">
-            Username: <input type="text" name="username" value="username">
-            Password: <input type="password" name="password" value="password">
-            Customers: <select name="userId">
-                <% for(i = 0; i < user.length; i++) { %>
-                    <option value="<%= user[i]._id %>"><%=user[i].username%></option>
-                <% } %>
-            </select> <br>
+            Username:<input type="text" name="username" value="username">
+            Password:<input type="password" name="password" value="password">
+            Seat Status:<label class="switch">
+                            <input type="checkbox"  name="seatStatus">
+                            <span class="slider round"></span>
+                        </label>
+
             <button type="submit">Add Barber</button>
 
         </form>

@@ -22,8 +22,14 @@
 
     <main>
         <form action="/users" method="POST">
-            Username: <input type="text" name="username" value="username">
-            Password: <input type="password" name="password" value="password">
+            Username:<input type="text" name="username" value="username">
+            Password:<input type="password" name="password" value="password">
+            Barbers:<select type="radio" name="barberId">
+                        <% for(i = 0; i < barber.length; i++) { %>
+                            <option value="<%= barber[i]._id %>"><%=barber[i].username%></option>
+                        <% } %>
+                    </select> <br>
+
             <button type="submit">Add User</button>
         </form>
     </main>

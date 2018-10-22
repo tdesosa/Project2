@@ -12,6 +12,7 @@ const Barber = require('../models/barberModel')
 const router  = express.Router();
 
 // INDEX ROUTE
+
 router.get('/', async (req, res, next) => {
     try{
         const foundUsers = await User.find();
@@ -25,16 +26,26 @@ router.get('/', async (req, res, next) => {
 });
 
 // NEW ROUTE
-router.get('/new', (req, res, next)=>{
-    res.render('users/new.ejs');
+
+router.get('/new', async (req, res, next)=>{
+    const foundBarber = await Barber.find({});
+
+    res.render('users/new.ejs', {
+        barber: foundBarber
+    });
 });
 
 // SHOW ROUTE
+
 router.get('/:id', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
+        const foundBarber = await Barber.findById(req.body.barberId)
+        // const foundBarber = await Barber.findOne({"barbers._id": req.params.id});
+        // console.log(foundBarber);
         res.render("users/show.ejs", {
-            user: foundUser
+            user: foundUser,
+            barber: foundBarber
         });
     } catch (err) {
         next(err);
@@ -42,11 +53,16 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // EDIT ROUTE
+
 router.get('/:id/edit', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
+        const foundBarber = await Barber.findById(req.body.barberId);
+        // const foundBarber = await Barber.findById(req.params.id);
+        console.log(foundBarber);
         res.render('users/edit.ejs', {
-            user: foundUser
+            user: foundUser,
+            barber: foundBarber
         });
     } catch (err) {
         next(err);
@@ -54,20 +70,22 @@ router.get('/:id/edit', async (req, res, next) => {
 });
 
 // CREATE ROUTE
+
 router.post('/', async (req, res, next) => {
     try {
         const newBarber = await Barber.findById(req.body.barberId)
         const newUser = await User.create(req.body);
         newUser.barbers.push(newBarber);
         await newUser.save();
+
         res.redirect('/users');
     } catch (err) {
         next(err);
     }
 });
 
-
 // UPDATE ROUTE
+
 router.put('/:id', async (req, res, next) => {
     try {
         const newUser = await User.findByIdAndUpdate(req.params.id, req.body);
@@ -77,10 +95,36 @@ router.put('/:id', async (req, res, next) => {
     }
 });
 
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const newUser = await User.findOne({'_id': req.body.userId});
+//         const barber = await Barber.findById(req.params.id);
+//         const oldUser = await User.findOne({'barbers._id': barbers._id})
+//         await Barber.findByIdAndUpdate(req.params.id, req.body);
+//         for (let i = 0; i < oldUser.barbers.length; i++){
+//             if (`${oldUser.barbers[i]._id}` === `${barbers._id}`){
+//                 await oldUser.barbers.splice(i, 1);
+//             }
+//         }
+//         newUser.barbers.push(barber);
+//         await newUser.save();
+//         await oldUser.save();
+//         res.redirect(`/barbers/${req.params.id}`)
+//     } catch (err){
+//         res.send(err);
+//     }
+// });
+
 // DELETE ROUTE
+
 router.delete('/:id', async (req, res) => {
     try {
+        const foundUser = User.findOne({"barbers._id": req.params.id});
+        const foundBarber = await Barber.findById(req.params.id);
+        user.barbers.id(req.params.id).remove();
         const deletedUser = await User.findByIdAndDelete(req.params.id);
+        await foundUser.save();
+
         res.redirect('/users');
     } catch (err) {
         next (err);

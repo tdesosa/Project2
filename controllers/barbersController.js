@@ -28,9 +28,9 @@ router.get('/', async (req, res, next) => {
 // NEW ROUTE
 
 router.get('/new', async (req, res, next) => {
-    const foundUser = await User.find({});
+    // const foundUser = await User.find({});
     res.render('barbers/new.ejs', {
-        user: foundUser
+        // user: foundUser
     });
 });
 
@@ -39,11 +39,11 @@ router.get('/new', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const foundBarber = await Barber.findById(req.params.id);
-        const foundUser = await User.findOne({"barbers._id": req.params.id});
+        // const foundUser = await User.findOne({"barbers._id": req.params.id});
 
         res.render('barbers/show.ejs', {
             barber: foundBarber,
-            user: foundUser
+            // user: foundUser
         });
     } catch (err) {
         next(err);
@@ -68,10 +68,11 @@ router.get('/:id/edit', async (req, res, nex) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const newUser = await User.findById(req.body.userId)
+        // const newUser = await User.findById(req.body.userId)
         const newBarber = await Barber.create(req.body);
-        newUser.barbers.push(newBarber);
+        // newUser.barbers.push(newBarber);
         await newBarber.save();
+        
         res.redirect('/barbers');
     } catch (err) {
         next(err);
@@ -117,28 +118,14 @@ router.delete('/:id', async (req, res, next) => {
     try {
         //const user = await User.findOne({'barbers._id': req.params.id});
         const barber = await Barber.findById(req.params.id);
-        //user.id(req.params.id).remove();
+        //user.barbers.id(req.params.id).remove();
         const deletedBarber = await Barber.findByIdAndDelete(req.params.id);
-        //console.log(foundUser);
         // await user.save();
         res.redirect('/barbers');
     } catch (err) {
         next(err);
     }
 });
-
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const user = await User.findOne({'photos._id': req.params.id});
-//         const photo = await Photo.findById(req.params.id);
-//         user.photos.id(req.params.id).remove();
-//         await Photo.findByIdAndDelete(req.params.id);
-//         await user.save();
-//         res.redirect('/photos');
-//     } catch(err){
-//         res.send(err);
-//     }
-// })
 
 // EXPORT ROUTER
 
