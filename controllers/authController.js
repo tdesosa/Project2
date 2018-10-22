@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bcrypt  = require('bcryptjs');
+
 // REQUIRE MODELS
 
 const User = require('../models/userModel');
@@ -10,63 +11,68 @@ const User = require('../models/userModel');
 
 const router  = express.Router();
 
-
+// INFORMATION THAT SESSION SAVES
 router.get('/', (req, res) => {
     req.session.username = 'username'
     req.session.password = 'password'
 });
 
-
-// LOGIN ROUTE
-router.post('/login', (req, res) => {
-    req.session.username = req.body.username;
-    req.session.password = req.body.password;
-    req.session.logged   = true;
-    console.log(req.session);
-    res.redirect('/authors')
-  });
-
-
-
-// router.post('/login', async(req, res, next) => {
-//     try {
-//         console.log(req.body)
-//         const user = await User.find({username: req.body.username});
-//         const validLogin = await bcrypt.compare(req.body.password, user.password);
-//         console.log(validLogin);
-//         req.session.userId = user._id;
-//         res.redirect('/login');
-//     } catch(err) {
-//         next(err)
-//     }
-// });
-
-// router.post('/', async(req, res) => {
-//     try{
-//         if(!req.session.userId){
-//             res.render('/auth/login', {
-//                 message: "you must be logged in to do that"
-//             })
-//         } else{
-//             const newReview = {
-//                 title: req.body.title,
-//                 body: req.body.body,
-//                 // etc etc from the schema
-//                 rating: req.body.rating,
-//                 coffee: req.body.cofee,
-//                 reviewer: req.session.userId
-//             }
-//         }
-//     } catch(err){
-//         next(err)
-//     }
-// });
+// ROUTE LEADING FROM HOME PAGE TO REGISTER PAGE
+router.get("/register", (req, res) => {
+    res.render("register.ejs")
+})
 
 // REGISTER ROUTE
+router.post('/register', (req, res, next) => {
+    const password = req.body.password;
+    const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(12));
+    const userDbEntry = {};
+    userDbEntry.username = req.body.username;
+    userDbEntry.password = passwordHash;
+    User.create(userDbEntry, (err, user) => {
+        console.log(user);
+        req.session.username = user.username;
+        req.session.logged   = true;
+        res.redirect('/')
+  });
+});
 
-// CREATE ROUTE
+
+// LOGIN ROUTE
+router.post('/login', (req, res, next) => {
+    console.log(req.body)
+    User.findOne({username: req.body.username}, (err, user) => {
+        if(user){
+            if(bcrypt.compareSync(req.body.password, user.password)){
+                req.session.message  = 'Successfully logged in!';
+                req.session.username = req.body.username;
+                req.session.logged   = true;
+                console.log(req.session, req.body)
+                res.redirect('/')
+            } else {
+                req.session.message = 'Username or password are incorrect';
+                res.redirect('/')
+            }
+        } else {
+            req.session.message = 'Username or password are incorrect';
+            res.redirect('/')
+        }
+    });
+});
 
 // LOGOUT ROUTE
+router.get('/logout', (req, res, next) => {
+    if (req.session) {
+      // delete session object
+      req.session.destroy((err) => {
+        if(err) {
+          return next(err);
+        } else {
+          return res.redirect('/');
+        }
+      });
+    }
+});
 
 // EXPORT ROUTER
 

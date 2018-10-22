@@ -32,15 +32,29 @@ app.use(methodOverride('_method'));
 app.use('/auth', authController);
 app.use('/users', usersController);
 app.use('/barbers', barbersController);
-
-// LANDING PAGE
-app.get('/', (req, res) => {
-    res.render("login.ejs")
+app.use((req, res, next) => {
+    if(req.session.message){
+        res.locals.message = req.session.message;
+        delete req.session.message;
+    }
+    next();
 });
 
-// app.get('/', (req, res) => {
-//     res.render('landing.ejs');
-// });
+// LANDING PAGE
+
+app.get('/', async (req, res, next) => {
+    try{
+        if(!req.session.username){
+            res.render('login.ejs', {
+                message: "You must be logged in to do that"
+        })
+    } else {
+        res.render('landing.ejs');
+    }
+    } catch(err){
+        next(err)
+    }
+});
 
 // SET PORT VARIABLE
 
