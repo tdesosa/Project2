@@ -17,6 +17,7 @@ router.get('/', async (req, res, next) => {
     try {
         const foundBarbers = await Barber.find({});
 
+
         res.render('barbers/index.ejs', {
             barbers: foundBarbers
         });
