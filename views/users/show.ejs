@@ -17,7 +17,9 @@
         <ul>
             <li>Username: <%= user.username %></li>
             <li>Password: <%= user.password %></li>
-            <li>Barbers: <%= user.barbers %></li>
+            <li>Barbers: <% user.barbers.forEach((barber)=>{ %>
+                    <%=barber.username %>
+            <% }) %></li>
         </ul>
 
         <form action='/users/<%=user._id%>?_method=DELETE' method="POST">

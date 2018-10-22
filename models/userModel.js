@@ -9,11 +9,11 @@ const Barber = require('./barberModel');
 // USER SCHEMA
 
 const userSchema = new mongoose.Schema({
-    username: {type: String, required: true},
+    username: {type: String, required: true}, // may need to use unique: true here
     password: String,
-    email: String,
-    phoneNumber: String,
-    city: String,
+    // email: String,
+    // phoneNumber: String,
+    // city: String,
     barbers: [Barber.schema]
 });
 
