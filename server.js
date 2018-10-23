@@ -32,6 +32,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
+
 app.use('/auth', authController);
 app.use('/users', usersController);
 app.use('/barbers', barbersController);
