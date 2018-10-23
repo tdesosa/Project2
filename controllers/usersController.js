@@ -120,11 +120,11 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const foundUser = User.findOne({"barbers._id": req.params.id});
-        const foundBarber = await Barber.findById(req.params.id);
-        user.barbers.id(req.params.id).remove();
+        // const foundUser = User.findOne({"barbers._id": req.params.id});
+        // const foundBarber = await Barber.findById(req.params.id);
+        // user.barbers.id(req.params.id).remove();
         const deletedUser = await User.findByIdAndDelete(req.params.id);
-        await foundUser.save();
+        // await foundUser.save();
 
         res.redirect('/users');
     } catch (err) {
