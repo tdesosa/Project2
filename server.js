@@ -32,6 +32,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
+
 app.use('/auth', authController);
 app.use('/users', usersController);
 app.use('/barbers', barbersController);
@@ -49,7 +50,7 @@ app.get('/', async (req, res, next) => {
     try{
         if(!req.session.username){
             res.render('login.ejs', {
-                message: "You must be logged in to do that"
+                // message: "You must be logged in to do that"
         })
     } else {
         res.render('landing.ejs');
