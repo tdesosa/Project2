@@ -31,7 +31,7 @@ router.post('/register', (req, res, next) => {
     userDbEntry.password = passwordHash;
     User.create(userDbEntry, (err, user) => {
         console.log(user);
-        req.session.userId = user.userId;
+        req.session.userId = user._id;
         req.session.logged   = true;
         res.redirect('/')
   });
