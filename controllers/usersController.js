@@ -15,7 +15,7 @@ const router  = express.Router();
 
 router.get('/', async (req, res, next) => {
     try{
-        const foundUsers = await User.find();
+        const foundUsers = await User.find({});
 
         res.render("users/index.ejs", {
             users: foundUsers
@@ -40,8 +40,9 @@ router.get('/new', async (req, res, next)=>{
 router.get('/:id', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
+        console.log(req.body);
         const foundBarber = await Barber.find({});
-        // const foundBarber = await Barber.findById(req.body.barberId)
+        // const foundBarber = await Barber.findById(req.body.barberId);
         // const foundBarber = await Barber.findOne({"barbers._id": req.params.id});
         // console.log(foundBarber);
         res.render("users/show.ejs", {
@@ -58,9 +59,12 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/edit', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
+        const allBarbers = await Barber.find({});
         const foundBarber = await Barber.findById(req.body.barberId);
         // const foundBarber = await Barber.findById(req.params.id);
-        console.log(foundBarber);
+        // console.log(foundBarber);
+        foundUser.barbers.push(foundBarber);
+        await foundUser.save();
         res.render('users/edit.ejs', {
             user: foundUser,
             barber: foundBarber
