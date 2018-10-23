@@ -49,7 +49,7 @@ app.get('/', async (req, res, next) => {
     try{
         if(!req.session.username){
             res.render('login.ejs', {
-                message: "You must be logged in to do that"
+                // message: "You must be logged in to do that"
         })
     } else {
         res.render('landing.ejs');
