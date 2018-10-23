@@ -31,7 +31,11 @@ router.post('/register', (req, res, next) => {
     userDbEntry.password = passwordHash;
     User.create(userDbEntry, (err, user) => {
         console.log(user);
+<<<<<<< HEAD
         req.session.userId = user._id;
+=======
+        req.session.userId = user.userId;
+>>>>>>> e7719abf4c917bd0e0a5954bbced7ff6d49f90a2
         req.session.logged   = true;
         res.redirect('/')
   });
@@ -39,13 +43,14 @@ router.post('/register', (req, res, next) => {
 
 
 // LOGIN ROUTE
-router.post('/login', (req, res, next) => {
-    console.log(req.body)
-    User.findOne({username: req.body.username}, (err, user) => {
+router.post('/login', async (req, res, next) => {
+    try{
+        console.log(req.body)
+        await User.findOne({username: req.body.username}, (err, user) => {
         if(user){
             if(bcrypt.compareSync(req.body.password, user.password)){
                 req.session.message  = 'Successfully logged in!';
-                req.session.username = req.body.username;
+                req.session.userId = user._id;
                 req.session.logged   = true;
                 console.log(req.session, req.body)
                 res.redirect('/')
@@ -58,6 +63,9 @@ router.post('/login', (req, res, next) => {
             res.redirect('/')
         }
     });
+    } catch(err){
+        next(err);
+    }
 });
 
 // LOGOUT ROUTE
