@@ -6,6 +6,7 @@ const express = require('express');
 
 const User = require('../models/userModel')
 const Barber = require('../models/barberModel')
+const requireLogin = require("../middleware/requireLogin")
 
 // EXPRESS ROUTER METHOD
 
@@ -13,7 +14,7 @@ const router  = express.Router();
 
 // INDEX ROUTE
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireLogin, async (req, res, next) => {
     try{
         const foundUsers = await User.find();
 
@@ -27,17 +28,20 @@ router.get('/', async (req, res, next) => {
 
 // NEW ROUTE
 
-router.get('/new', async (req, res, next)=>{
-    const foundBarber = await Barber.find({});
-
-    res.render('users/new.ejs', {
-        barber: foundBarber
-    });
+router.get('/new', requireLogin, async (req, res, next)=>{
+    try{
+        const foundBarber = await Barber.find({});
+        res.render('users/new.ejs', {
+            barber: foundBarber
+        });
+    } catch(err){
+        next(err)
+    }
 });
 
 // SHOW ROUTE
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireLogin, async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
         const foundBarber = await Barber.find({});
@@ -55,7 +59,7 @@ router.get('/:id', async (req, res, next) => {
 
 // EDIT ROUTE
 
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', requireLogin, async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
         const foundBarber = await Barber.findById(req.body.barberId);
@@ -72,7 +76,7 @@ router.get('/:id/edit', async (req, res, next) => {
 
 // CREATE ROUTE
 
-router.post('/', async (req, res, next) => {
+router.post('/', requireLogin, async (req, res, next) => {
     try {
         const newBarber = await Barber.findById(req.body.barberId)
         const newUser = await User.create(req.body);
@@ -87,7 +91,7 @@ router.post('/', async (req, res, next) => {
 
 // UPDATE ROUTE
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireLogin, async (req, res, next) => {
     try {
         const newUser = await User.findByIdAndUpdate(req.params.id, req.body);
         res.redirect(`/users/${req.params.id}`);
@@ -118,7 +122,7 @@ router.put('/:id', async (req, res, next) => {
 
 // DELETE ROUTE
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireLogin, async (req, res) => {
     try {
         // const foundUser = User.findOne({"barbers._id": req.params.id});
         // const foundBarber = await Barber.findById(req.params.id);

@@ -27,7 +27,17 @@ app.use(session({
     saveUninitialized: false
    
 }));
-
+app.use((req, res, next) => {
+    if(req.session.message){
+        res.locals.message = req.session.message;
+        delete req.session.message;
+    }
+    next();
+});
+app.use(async(req, res, next) => {
+    res.locals.user = req.session.user || {};
+    next()
+});
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
@@ -36,22 +46,14 @@ app.use(methodOverride('_method'));
 app.use('/auth', authController);
 app.use('/users', usersController);
 app.use('/barbers', barbersController);
-app.use((req, res, next) => {
-    if(req.session.message){
-        res.locals.message = req.session.message;
-        delete req.session.message;
-    }
-    next();
-});
+
 
 // LOGIN PAGE
 
 app.get('/', async (req, res, next) => {
     try{
-        if(!req.session.username){
-            res.render('login.ejs', {
-                // message: "You must be logged in to do that"
-        })
+        if(!req.session.userId){
+            res.render('login.ejs');
     } else {
         res.render('landing.ejs');
     }

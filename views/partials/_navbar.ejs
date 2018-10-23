@@ -1,0 +1,15 @@
+<header>
+    <ul>
+            <% if(typeof user._id !== "undefined"){ %>
+                <li><a href='/'>Return To Homepage</a></li>
+                <li><a href='/users'>Users Index</a></li>
+                <li><a href='/barbers'>Barbers Index</a></li>
+            } else { 
+                Login
+                Register
+            <% } %>
+            
+    </ul>
+</header>
+
+
