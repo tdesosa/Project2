@@ -18,10 +18,10 @@
             Username:<input type="text" name="username" value="<%=user.username%>">
             Password:<input type="text" name="password" value="<%=user.password%>">
             Barbers:<select type="radio" name="barberId">
-                        <% user.barbers.forEach((barber) => { %>
-                            <option value="<%= barber._id %>"><%=barber.username%></option>
-                        <% }) %>
-                    </select> <br>
+                <% for(i = 0; i < barber.length; i++) { %>
+                    <option value="<%= barber[i]._id %>"><%=barber[i].username%></option>
+                <% } %>
+            </select> <br>
 
         <button type="submit">Update User</button>
         </form>
