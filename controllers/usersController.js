@@ -40,7 +40,8 @@ router.get('/new', async (req, res, next)=>{
 router.get('/:id', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
-        const foundBarber = await Barber.findById(req.body.barberId)
+        const foundBarber = await Barber.find({});
+        // const foundBarber = await Barber.findById(req.body.barberId)
         // const foundBarber = await Barber.findOne({"barbers._id": req.params.id});
         // console.log(foundBarber);
         res.render("users/show.ejs", {

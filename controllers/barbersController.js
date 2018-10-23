@@ -14,15 +14,16 @@ const router  = express.Router();
 // INDEX ROUTE
 
 router.get('/', async (req, res, next) => {
-        try {
-            const foundBarbers = await Barber.find({});
+    try {
+        const foundBarbers = await Barber.find({});
 
-            res.render('barbers/index.ejs', {
-                barbers: foundBarbers
-            });
-        } catch (err) {
-            next(err);
-        }
+
+        res.render('barbers/index.ejs', {
+            barbers: foundBarbers
+        });
+    } catch (err) {
+        next(err);
+    }
 });
 
 // NEW ROUTE

@@ -10,6 +10,10 @@
 <body>
     <h1>Login Page:</h1>
 
+    <% if(typeof message !== "undefined") { %>
+        <%= message %>
+    <% } %>
+
     <form action="/auth/login" method="POST">
         Username: <input type="text" name="username">
         Password: <input type="password" name="password">

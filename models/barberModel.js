@@ -16,7 +16,7 @@ const barberSchema = new mongoose.Schema({
     // phoneNumber: String,
     // city: String,
     seatStaus: Boolean,
-    // users: {type: mongoose.Schema.Types.ObjectId, required: "User"}
+    users: {type: mongoose.Schema.Types.ObjectId, ref: "Users"}  // ref refers to Users Collection Not Model
 });
 
 // EXPORT BARBER SCHEMA
