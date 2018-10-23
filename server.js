@@ -13,11 +13,14 @@ require('./db/db');
 
 // REQUIRE CONTROLLERS
 
-const authController  = require('./controllers/authController');
-const usersController  = require('./controllers/usersController');
+const authController    = require('./controllers/authController');
+const usersController   = require('./controllers/usersController');
 const barbersController = require('./controllers/barbersController');
 
 // MIDDLEWARE SETUP
+
+app.use(express.static('public'));
+
 app.use(session({
     secret: "Secret String",
     resave: false,
@@ -40,7 +43,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// LANDING PAGE
+// LOGIN PAGE
 
 app.get('/', async (req, res, next) => {
     try{
