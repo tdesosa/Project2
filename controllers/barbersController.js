@@ -88,13 +88,38 @@ router.post('/', requireLogin, async (req, res, next) => {
 
 router.put('/:id', requireLogin, async (req, res, next) => {
     try {
-        const newBarber = await Barber.findByIdAndUpdate(req.params.id, req.body);
+        console.log(req.body);
+        let seatStatus;
+        if(req.body.seatStatus == "on"){
+            seatStatus = true;
+        }else{
+            seatStatus = false;
+        }
+            dbQuery = {
+            seatStatus: seatStatus
+        }
+        await Barber.findByIdAndUpdate(req.params.id, dbQuery);
 
         res.redirect(`/barbers/${req.params.id}`);
     } catch (err) {
         next(err);
     }
 });
+
+        // let status;
+        // if(req.body.status == "on"){
+        //     status = true;
+        // }else{
+        //     status = false;
+        // }
+
+        // dbQuery = {
+        //     username: req.body.username
+        //     password:
+        //     status: status
+        // }
+
+        // Barber.create(dbQuery)
 
 
 // router.put('/:id', async (req, res) => {
