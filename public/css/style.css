@@ -2,6 +2,23 @@ body {
     background-image: url("http://freedombarbersf.com/wp-content/uploads/2015/07/freedombarbersf_banner1.jpg");
     background-position: center;
     color: white;
+    font-family: 'Bree Serif', serif;
+}
+.test {
+  background-image: url("http://freedombarbersf.com/wp-content/uploads/2015/07/freedombarbersf_banner1.jpg");
+  background-position: center;
+  color: white;
+  font-family: 'Bree Serif', serif;
+  font-size: 25px;
+  margin: 10px
+}
+
+.register {
+  margin-top: 10px;
+}
+
+.loginTitle {
+  margin-bottom: 20px
 }
 
 
