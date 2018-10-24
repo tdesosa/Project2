@@ -19,26 +19,36 @@
             <li>Username: <%= barber.username %></li>
             <!-- <li>Password: <%= barber.password %></li> -->
             <li>Customers: <%= barber.users %></li>
+            <li> Seat Status:
+                <% if(barber.seatStatus == true){ %>
+                    <%= "This Barber Is Available"%>
+                <% }else{ %>
+                    <%= "This Barber Is Busy" %>
+                <% } %>   
+            </li>
         </ul>
 
+        <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
+        Username:<input type="text" name="username" value="<%=barber.username%>">
+        Password:<input type="text" name="password" value="<%=barber.password%>">
+        Seat Status:<label class="switch">
+                    <input type="checkbox"  name="seatStatus">
+                    <span class="slider round"></span>
+                    </label>
+        <button type="submit">Update Barber</button>
+        </form>
+
         <form action='/barbers/<%=barber._id%>?_method=DELETE' method="POST">
-            <input type="submit" value='Delete Barber'>
+            <input type="submit" value='Delete My Barber Profile'>
         </form>
 
         <button>
-            <a href='/barbers/<%=barber._id%>/edit'>Edit Barber</a>
+            <a href='/barbers/<%=barber._id%>/edit'>Set Seat Status / Edit Profile</a>
         </button>
 
         <form action="/auth/logout" method="GET" >
             <input type="submit" value="Logout">
         </form>
-
-        <nav>
-            <ul>
-                <li><a href='/'>Return To Homepage</a></li>
-                <li><a href='/barbers'>Barbers Index</a></li>
-            </ul>
-        </nav>
 
     </main>
     

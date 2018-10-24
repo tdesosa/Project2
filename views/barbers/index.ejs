@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BARBERS INDEX PAGE</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
     <header>
     <h1>Barbers Index Page:</h1>
     <% include ../partials/_navbar %>
-    <nav>
-        <ul>
-            <li><a href='/'>Return To Homepage</a></li>
-            <li><a href='/barbers/new'>Create A New Barber</a></li>
-        </ul>
-    </nav>
     </header>
 
     <main>
-        <h1>Barbers:</h1>
+
+
+
+        <h1>Currently Registerd Barbers:</h1>
+        <h3>Select Your Profile Below:</h3>
         
         <ul>
             <% for(let i = 0; i < barbers.length; i++) { %>
-                <li>
-                    <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
-                </li>
+            <li>
+                <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
+                <% if(barbers[i].seatStatus == true){ %>
+                    <%= "This Barber Is Available"%>
+                <% }else{ %>
+                    <%= "This Barber Is Busy" %>
+                <% } %>   
+            </li>
             <% } %>
         </ul>  
         <form action="/auth/logout" method="GET" >

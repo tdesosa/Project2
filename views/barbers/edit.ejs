@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BARBERS EDIT PAGE</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -17,20 +18,16 @@
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>">
-            Seat Status: <input type="radio" name="seatStatus"  value="<%=barber.seatStatus%>">
+            Seat Status:<label class="switch">
+                        <input type="checkbox"  name="seatStatus">
+                        <span class="slider round"></span>
+                        </label>
         <button type="submit">Update Barber</button>
         </form>
 
         <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >
             <input type="submit" value="Delete Barber">
         </form>
-
-        <nav>
-            <ul>
-                <li><a href='/'>Return To Homepage</a></li>
-                <li><a href='/barbers'>Barbers Index</a></li>
-            </ul>
-        </nav>
 
         <form action="/auth/logout" method="GET" >
             <input type="submit" value="Logout">
