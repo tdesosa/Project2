@@ -17,6 +17,7 @@
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>">
+            Seat Status: <input type="radio" name="seatStatus"  value="<%=barber.seatStatus%>">
         <button type="submit">Update Barber</button>
         </form>
 

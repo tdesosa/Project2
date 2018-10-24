@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>USERS INDEX PAGE</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -28,6 +29,21 @@
                 </li>
             <% } %>
         </ul>  
+
+        <h1>Barbers:</h1>
+        <ul>
+            <% for(let i = 0; i < barbers.length; i++) { %>
+                <li>
+                    <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
+                    <% if(barbers[i].seatStatus == false){ %>
+                        <%= barbers[i].seatStatus %>
+                    <% }else{ %>
+                        <% console.log(barbers[i].seatStatus); %>
+                    <% } %>   
+                </li>
+            <% } %>
+        </ul>  
+
         <form action="/auth/logout" method="GET" >
             <input type="submit" value="Logout">
         </form> 

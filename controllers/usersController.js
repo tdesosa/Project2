@@ -17,9 +17,11 @@ const router  = express.Router();
 router.get('/', requireLogin, async (req, res, next) => {
     try{
         const foundUsers = await User.find({});
+        const foundBarbers = await Barber.find({});
 
         res.render("users/index.ejs", {
-            users: foundUsers
+            users: foundUsers,
+            barbers: foundBarbers
         });
     }catch (err) {
         next(err)
@@ -44,8 +46,8 @@ router.get('/new', requireLogin, async (req, res, next)=>{
 router.get('/:id', requireLogin, async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
-        console.log(req.body);
-        const foundBarber = await Barber.find({});
+        const foundBarber = await Barber.find();
+        console.log(foundBarber);
         // const foundBarber = await Barber.findById(req.body.barberId);
         // const foundBarber = await Barber.findOne({"barbers._id": req.params.id});
         // console.log(foundBarber);
@@ -64,14 +66,12 @@ router.get('/:id/edit', requireLogin, async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.id);
         const allBarbers = await Barber.find({});
-        const foundBarber = await Barber.findById(req.body.barberId);
         // const foundBarber = await Barber.findById(req.params.id);
         // console.log(foundBarber);
-        foundUser.barbers.push(foundBarber);
         await foundUser.save();
         res.render('users/edit.ejs', {
             user: foundUser,
-            barber: foundBarber
+            barber: allBarbers
         });
     } catch (err) {
         next(err);
@@ -98,6 +98,9 @@ router.post('/', requireLogin, async (req, res, next) => {
 router.put('/:id', requireLogin, async (req, res, next) => {
     try {
         const newUser = await User.findByIdAndUpdate(req.params.id, req.body);
+        const foundBarber = await Barber.findById(req.body.barberId);
+        newUser.barbers.push(foundBarber);
+        await newUser.save();
         res.redirect(`/users/${req.params.id}`);
     } catch (err) {
         next(err);
