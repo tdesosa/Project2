@@ -9,11 +9,16 @@ body {
   background-position: center;
   color: white;
   font-family: 'Bree Serif', serif;
+  font-size: 25px;
   margin: 10px
 }
 
 .register {
-  margin: 10px;
+  margin-top: 10px;
+}
+
+.loginTitle {
+  margin-bottom: 20px
 }
 
 
