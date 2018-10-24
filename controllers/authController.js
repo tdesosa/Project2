@@ -30,7 +30,11 @@ router.post('/register', (req, res, next) => {
     userDbEntry.username = req.body.username;
     userDbEntry.password = passwordHash;
     User.create(userDbEntry, (err, user) => {
-        //console.log(user);
+
+        console.log(user);
+
+       
+
         req.session.userId = user._id;
         req.session.logged   = true;
         res.redirect('/')
@@ -48,7 +52,10 @@ router.post('/login', async (req, res, next) => {
                 req.session.message  = 'Successfully logged in!';
                 req.session.userId = user._id;
                 req.session.logged   = true;
-                // console.log(req.session, req.body)
+
+                req.session.user = user;
+                console.log(req.session, req.body)
+
                 res.redirect('/')
             } else {
                 req.session.message = 'Username or password are incorrect';
