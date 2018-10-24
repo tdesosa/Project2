@@ -13,7 +13,7 @@
 
     <main>
         <h1>Barber Attributes:</h1>
-
+        <% include ../partials/_navbar %>
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>">

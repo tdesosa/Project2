@@ -10,7 +10,7 @@
 
     <header>
     <h1>Barbers Index Page:</h1>
-
+    <% include ../partials/_navbar %>
     <nav>
         <ul>
             <li><a href='/'>Return To Homepage</a></li>
@@ -21,6 +21,7 @@
 
     <main>
         <h1>Barbers:</h1>
+        
         <ul>
             <% for(let i = 0; i < barbers.length; i++) { %>
                 <li>
