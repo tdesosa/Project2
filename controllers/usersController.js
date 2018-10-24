@@ -29,21 +29,6 @@ router.get('/', requireLogin, async (req, res, next) => {
 });
 
 
-        // let status;
-        // if(req.body.status == "on"){
-        //     status = true;
-        // }else{
-        //     status = false;
-        // }
-
-        // dbQuery = {
-        //     username: req.body.username
-        //     password:
-        //     status: status
-        // }
-
-        // Barber.create(dbQuery)
-
 // NEW ROUTE
 
 router.get('/new', requireLogin, async (req, res, next)=>{
