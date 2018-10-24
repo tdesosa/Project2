@@ -13,11 +13,15 @@
     </header>
 
     <main>
-        <h1>Barber Attributes:</h1>
+        <h1><%= barber.username %> Page:</h1>
         <% include ../partials/_navbar %>
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>">
+
+
+
+            <p>Click "Update Barber" To Let The Barber Know Your On The Way:</p>
             Seat Status:<label class="switch">
                         <input type="checkbox"  name="seatStatus">
                         <span class="slider round"></span>

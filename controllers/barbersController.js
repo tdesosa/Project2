@@ -30,6 +30,16 @@ router.get('/', requireLogin, async (req, res, next) => {
 
 router.get('/new', requireLogin, async (req, res, next) => {
     try{
+        //console.log(req.body);
+        let seatStatus;
+        if(req.body.seatStatus == "on"){
+            seatStatus = true;
+        }else{
+            seatStatus = false;
+        }
+            dbQuery = {
+            seatStatus: seatStatus
+        }
         // const foundUser = await User.find({});
         res.render('barbers/new.ejs', {
         // user: foundUser
@@ -74,10 +84,20 @@ router.get('/:id/edit', requireLogin, async (req, res, nex) => {
 router.post('/', requireLogin, async (req, res, next) => {
     try {
         console.log(req.body);
-        const newUser = await User.findById(req.session.userId)
+        let seatStatus;
+        if(req.body.seatStatus == "on"){
+            seatStatus = true;
+        }else{
+            seatStatus = false;
+        }
+            dbQuery = {
+            seatStatus: seatStatus
+        }
+        
+        // const newUser = await User.findById(req.session.userId)
         const newBarber = await Barber.create(req.body);
         // newUser.barbers.push(newBarber);
-        await newUser.save();
+        // await newUser.save();
         res.redirect('/barbers');
     } catch (err) {
         next(err);
@@ -105,42 +125,6 @@ router.put('/:id', requireLogin, async (req, res, next) => {
         next(err);
     }
 });
-
-        // let status;
-        // if(req.body.status == "on"){
-        //     status = true;
-        // }else{
-        //     status = false;
-        // }
-
-        // dbQuery = {
-        //     username: req.body.username
-        //     password:
-        //     status: status
-        // }
-
-        // Barber.create(dbQuery)
-
-
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const newUser = await User.findOne({'_id': req.body.userId});
-//         const barber = await Barber.findById(req.params.id);
-//         const oldUser = await User.findOne({'barbers._id': barbers._id})
-//         await Barber.findByIdAndUpdate(req.params.id, req.body);
-//         for (let i = 0; i < oldUser.barbers.length; i++){
-//             if (`${oldUser.barbers[i]._id}` === `${barbers._id}`){
-//                 await oldUser.barbers.splice(i, 1);
-//             }
-//         }
-//         newUser.barbers.push(barber);
-//         await newUser.save();
-//         await oldUser.save();
-//         res.redirect(`/barbers/${req.params.id}`)
-//     } catch (err){
-//         res.send(err);
-//     }
-// });
 
 // DELETE ROUTE
 

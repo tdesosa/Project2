@@ -12,8 +12,6 @@ USER STORY (MVP):
 
 3) The App will have a home page and allow the user to see which barbers on the app are available at any given time.
 
-4) If no barbers are available, user will be able to see how many people there are in front of him.
-
 
 TECHNOLOGIES USED:
 
