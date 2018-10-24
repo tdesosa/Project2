@@ -21,6 +21,30 @@ body {
   margin-bottom: 20px
 }
 
+#userIndexPic {
+  height: 300px;
+  width: 325px;
+}
+
+#barberIndexPic {
+  height: 300px;
+  width: 325px;
+  margin-right: 300px
+}
+
+.landingFont {
+  color: white;
+  font-family: 'Bree Serif', serif;
+  font-size: 25px;
+  margin: 10px
+
+}
+
+#realNavbar {
+  color: white;
+}
+
+
 
 /* The switch - the box around the slider */
 .switch {
