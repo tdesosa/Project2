@@ -18,7 +18,6 @@ router.get('/', requireLogin, async (req, res, next) => {
     try {
         const foundBarbers = await Barber.find({});
 
-
         res.render('barbers/index.ejs', {
             barbers: foundBarbers
         });
@@ -74,11 +73,11 @@ router.get('/:id/edit', requireLogin, async (req, res, nex) => {
 
 router.post('/', requireLogin, async (req, res, next) => {
     try {
-        // const newUser = await User.findById(req.body.userId)
+        console.log(req.body);
+        const newUser = await User.findById(req.session.userId)
         const newBarber = await Barber.create(req.body);
         // newUser.barbers.push(newBarber);
-        await newBarber.save();
-        
+        await newUser.save();
         res.redirect('/barbers');
     } catch (err) {
         next(err);

@@ -30,7 +30,11 @@ router.post('/register', (req, res, next) => {
     userDbEntry.username = req.body.username;
     userDbEntry.password = passwordHash;
     User.create(userDbEntry, (err, user) => {
+
         console.log(user);
+
+       
+
         req.session.userId = user._id;
         req.session.logged   = true;
         res.redirect('/')
@@ -41,15 +45,17 @@ router.post('/register', (req, res, next) => {
 // LOGIN ROUTE
 router.post('/login', async (req, res, next) => {
     try{
-        console.log(req.body)
+        //console.log(req.body)
         await User.findOne({username: req.body.username}, (err, user) => {
         if(user){
             if(bcrypt.compareSync(req.body.password, user.password)){
                 req.session.message  = 'Successfully logged in!';
                 req.session.userId = user._id;
                 req.session.logged   = true;
+
                 req.session.user = user;
                 console.log(req.session, req.body)
+
                 res.redirect('/')
             } else {
                 req.session.message = 'Username or password are incorrect';
