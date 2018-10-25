@@ -24,10 +24,11 @@
 
             <h3>Click "Update Barber" To Let The Barber Know Your On The Way:</h3>
             Seat Status:<label class="switch">
-                        <input type="checkbox"  name="seatStatus">
+                        <input type="checkbox"  name="seatStatus" >
                         <span class="slider round"></span>
                         </label>
-        <button type="submit">Update Barber</button>
+        <button id="seatStatusBtn" type="submit">Update Barber</button>
+        
         </form>
 
         <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >
