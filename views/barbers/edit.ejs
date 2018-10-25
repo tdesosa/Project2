@@ -10,18 +10,19 @@
 <body>
 
     <header>
+    <% include ../partials/_navbar %>
     </header>
 
     <main>
         <h1><%= barber.username %> Page:</h1>
-        <% include ../partials/_navbar %>
+
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
-            Username:<input type="text" name="username" value="<%=barber.username%>">
-            Password:<input type="text" name="password" value="<%=barber.password%>">
+            <!-- Username:<input type="text" name="username" value="<%=barber.username%>">
+            Password:<input type="text" name="password" value="<%=barber.password%>"> -->
 
 
 
-            <p>Click "Update Barber" To Let The Barber Know Your On The Way:</p>
+            <h3>Click "Update Barber" To Let The Barber Know Your On The Way:</h3>
             Seat Status:<label class="switch">
                         <input type="checkbox"  name="seatStatus">
                         <span class="slider round"></span>

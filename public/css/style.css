@@ -40,11 +40,30 @@ body {
 
 }
 
-#realNavbar {
+/* NAVBAR STYLING */
+
+.navbar-brand {
   color: white;
 }
 
+#home-link {
+  color: white;
+}
 
+#user-link {
+  color: white;
+}
+
+#barber-link {
+  color: white;
+}
+
+.navbar-toggler-icon {
+  background-color: white;
+}
+
+
+/* SEAT STATUS TOGGLE BUTTON */
 
 /* The switch - the box around the slider */
 .switch {
