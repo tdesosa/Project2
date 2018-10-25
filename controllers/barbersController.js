@@ -106,6 +106,7 @@ router.post('/', requireLogin, async (req, res, next) => {
 
 // UPDATE ROUTE
 
+
 router.put('/:id', requireLogin, async (req, res, next) => {
     try {
         console.log(req.body);
