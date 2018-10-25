@@ -42,7 +42,7 @@ router.get('/new', requireLogin, async (req, res, next) => {
         // }
         // const foundUser = await User.find({});
         res.render('barbers/new.ejs', {
-        user: foundUser
+        //user: foundUser
     });
     } catch(err){
         next(err)

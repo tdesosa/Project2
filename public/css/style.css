@@ -1,3 +1,5 @@
+/* EVERY PAGE */
+
 body {
     background-image: url("http://freedombarbersf.com/wp-content/uploads/2015/07/freedombarbersf_banner1.jpg");
     background-position: center;
@@ -13,24 +15,7 @@ body {
   margin: 10px
 }
 
-.register {
-  margin-top: 10px;
-}
-
-.loginTitle {
-  margin-bottom: 20px
-}
-
-#userIndexPic {
-  height: 300px;
-  width: 325px;
-}
-
-#barberIndexPic {
-  height: 300px;
-  width: 325px;
-  margin-right: 300px
-}
+/* LANDING PAGE */
 
 .landingFont {
   color: white;
@@ -62,6 +47,30 @@ body {
   background-color: white;
 }
 
+/* LOGIN PAGE */
+
+.register {
+  margin-top: 10px;
+}
+
+.loginTitle {
+  margin-bottom: 20px
+}
+
+/* USER INDEX PAGE */
+
+#userIndexPic {
+  height: 300px;
+  width: 325px;
+}
+
+/* BARBERS INDEX PAGE */
+
+#barberIndexPic {
+  height: 300px;
+  width: 325px;
+  margin-right: 300px
+}
 
 /* SEAT STATUS TOGGLE BUTTON */
 
