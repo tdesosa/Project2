@@ -30,19 +30,19 @@ router.get('/', requireLogin, async (req, res, next) => {
 
 router.get('/new', requireLogin, async (req, res, next) => {
     try{
-        //console.log(req.body);
-        let seatStatus;
-        if(req.body.seatStatus == "on"){
-            seatStatus = true;
-        }else{
-            seatStatus = false;
-        }
-            dbQuery = {
-            seatStatus: seatStatus
-        }
+        // //console.log(req.body);
+        // let seatStatus;
+        // if(req.body.seatStatus == "on"){
+        //     seatStatus = true;
+        // }else{
+        //     seatStatus = false;
+        // }
+        //     dbQuery = {
+        //     seatStatus: seatStatus
+        // }
         // const foundUser = await User.find({});
         res.render('barbers/new.ejs', {
-        // user: foundUser
+        //user: foundUser
     });
     } catch(err){
         next(err)
@@ -105,6 +105,7 @@ router.post('/', requireLogin, async (req, res, next) => {
 });
 
 // UPDATE ROUTE
+
 
 router.put('/:id', requireLogin, async (req, res, next) => {
     try {
