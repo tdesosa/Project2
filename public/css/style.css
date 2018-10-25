@@ -25,6 +25,7 @@ body {
 
 }
 
+
 /* NAVBAR STYLING */
 
 .navbar-brand {
@@ -40,6 +41,8 @@ body {
 }
 
 #barber-link {
+
+.navbarNavAltMarkup {
   color: white;
 }
 
@@ -84,7 +87,6 @@ body {
 }
 
 /* USER INDEX PAGE */
-
 
 
 /* SEAT STATUS TOGGLE BUTTON */
