@@ -13,24 +13,7 @@ body {
   margin: 10px
 }
 
-.register {
-  margin-top: 10px;
-}
-
-.loginTitle {
-  margin-bottom: 20px
-}
-
-#userIndexPic {
-  height: 300px;
-  width: 325px;
-}
-
-#barberIndexPic {
-  height: 300px;
-  width: 325px;
-  margin-right: 300px
-}
+/* LANDING PAGE */
 
 .landingFont {
   color: white;
@@ -40,7 +23,21 @@ body {
 
 }
 
-.navbarNavAltMarkup {
+/* NAVBAR STYLING */
+
+.navbar-brand {
+  color: white;
+}
+
+#home-link {
+  color: white;
+}
+
+#user-link {
+  color: white;
+}
+
+#barber-link {
   color: white;
 }
 
@@ -48,6 +45,32 @@ body {
   background-color: white;
 }
 
+/* LOGIN PAGE */
+
+.register {
+  margin-top: 10px;
+}
+
+.loginTitle {
+  margin-bottom: 20px
+}
+
+/* USER INDEX PAGE */
+
+#userIndexPic {
+  height: 300px;
+  width: 325px;
+}
+
+/* BARBERS INDEX PAGE */
+
+#barberIndexPic {
+  height: 300px;
+  width: 325px;
+  margin-right: 300px
+}
+
+/* SEAT STATUS TOGGLE BUTTON */
 
 /* The switch - the box around the slider */
 .switch {

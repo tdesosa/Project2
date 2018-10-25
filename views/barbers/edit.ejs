@@ -20,14 +20,15 @@
             <!-- Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>"> -->
 
-
-
             <h3>Click "Update Barber" To Let The Barber Know Your On The Way:</h3>
             Seat Status:<label class="switch">
-                        <input type="checkbox"  name="seatStatus">
+                        <input type="checkbox"  name="seatStatus" >
                         <span class="slider round"></span>
                         </label>
-        <button type="submit">Update Barber</button>
+            <button id="seatStatusBtn" type="submit">Update Barber</button>
+
+            <% console.log(barber.seatStatus) %>
+        
         </form>
 
         <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >
@@ -41,4 +42,4 @@
     </main>
     
 </body>
-</html>
+</html> 
