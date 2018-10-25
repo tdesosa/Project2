@@ -70,6 +70,10 @@ body {
   margin-right: 300px
 }
 
+.checked {
+  color: orange;
+}
+
 /* SEAT STATUS TOGGLE BUTTON */
 
 /* The switch - the box around the slider */
