@@ -40,21 +40,7 @@ body {
 
 }
 
-/* NAVBAR STYLING */
-
-.navbar-brand {
-  color: white;
-}
-
-#home-link {
-  color: white;
-}
-
-#user-link {
-  color: white;
-}
-
-#barber-link {
+.navbarNavAltMarkup {
   color: white;
 }
 
@@ -62,8 +48,6 @@ body {
   background-color: white;
 }
 
-
-/* SEAT STATUS TOGGLE BUTTON */
 
 /* The switch - the box around the slider */
 .switch {
