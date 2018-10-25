@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-<h1>Welcome:</h1>
+<% include ./partials/_navbar %>
 
 <div class="container">
-  <div class="row">
+  <div id="landingOptions"class="row">
     <div class="col">
         <a class="landingFont" href="/users">I'm Looking For A Haircut</a> <br>
         <a href="/users"><img id="userIndexPic" src="https://melbournechapter.net/images/clippers-vector-barber-chair-1.png"></a>
@@ -26,9 +25,9 @@
         <a href="/barbers"><img id="barberIndexPic" src="https://cdn.onlinewebfonts.com/svg/img_548029.png"></a>
     </div>
   </div>
-  <div class="row align-items-center">
+  <div class="row align-items-left">
     <form action="/auth/logout" method="GET" >
-        <input type="submit" value="Logout">
+        <input id="landingLogout" type="submit" value="Logout">
     </form>
   </div>
 </div>
