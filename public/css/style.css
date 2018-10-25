@@ -1,3 +1,5 @@
+/* EVERY PAGE */
+
 body {
     background-image: url("http://freedombarbersf.com/wp-content/uploads/2015/07/freedombarbersf_banner1.jpg");
     background-position: center;
@@ -23,6 +25,7 @@ body {
 
 }
 
+
 /* NAVBAR STYLING */
 
 .navbar-brand {
@@ -38,6 +41,8 @@ body {
 }
 
 #barber-link {
+
+.navbarNavAltMarkup {
   color: white;
 }
 
@@ -69,6 +74,7 @@ body {
   width: 325px;
   margin-right: 300px
 }
+
 
 /* SEAT STATUS TOGGLE BUTTON */
 
