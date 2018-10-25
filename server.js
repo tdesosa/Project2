@@ -48,7 +48,7 @@ app.use('/users', usersController);
 app.use('/barbers', barbersController);
 
 
-// LOGIN PAGE
+// LOGIN & LANDING PAGE
 
 app.get('/', async (req, res, next) => {
     try{
