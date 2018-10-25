@@ -44,6 +44,10 @@ body {
   color: white;
 }
 
+.navbar-toggler-icon {
+  background-color: white;
+}
+
 
 /* The switch - the box around the slider */
 .switch {

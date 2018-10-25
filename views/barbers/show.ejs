@@ -10,14 +10,12 @@
 <body>
 
     <header>
+        <% include ../partials/_navbar %>
     </header>
 
     <main>
-        <h1>Barbers Show Page:</h1>
-        <% include ../partials/_navbar %>
+        <h1><%= barber.username %></h1>
         <ul>
-            <li>Barber: <%= barber.username %></li>
-            <!-- <li>Password: <%= barber.password %></li> -->
             <li>Current Customer:<% if(barber.seatStatus == false){ %>
                 <%= `${user.username} Is On The Way` %>
               <%  }else{ %>
