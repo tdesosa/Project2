@@ -16,7 +16,7 @@ const barberSchema = new mongoose.Schema({
     // phoneNumber: String,
     // city: String,
     rating: Number,
-    seatStatus: {type: Boolean},
+    seatStatus: {type: Boolean, default: true},
     users: {type: mongoose.Schema.Types.ObjectId, ref: "Users"}  // ref refers to Users Collection Not Model
 });
 

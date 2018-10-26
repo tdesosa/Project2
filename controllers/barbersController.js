@@ -118,7 +118,8 @@ router.put('/:id', requireLogin, async (req, res, next) => {
         }
             dbQuery = {
             seatStatus: seatStatus,
-            rating: req.body.rating
+            rating: req.body.rating,
+            password: req.body.password,
         }
         await Barber.findByIdAndUpdate(req.params.id, dbQuery);
         res.redirect(`/barbers/${req.params.id}`);

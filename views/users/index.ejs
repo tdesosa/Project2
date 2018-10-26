@@ -22,7 +22,7 @@
         <ul>
             <% for(let i = 0; i < users.length; i++) { %>
                 <li>
-                    <a href='/users/<%=users[i].id%>'><%= users[i].username %></a>
+                    <a id="userName" href='/users/<%=users[i].id%>'><%= users[i].username %></a>
                 </li>
             <% } %>
         </ul>  
@@ -31,9 +31,9 @@
         <ul>
             <% for(let i = 0; i < barbers.length; i++) { %>
                 <li>
-                    <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
+                    <a id="barberName" href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
                     <% if(barbers[i].seatStatus == true){ %>
-                        <%= "This Barber Is Available"%>
+                        <p id="barberMessage">This Barber Is Available</p>
                     <% }else{ %>
                         <%= "This Barber Is Busy" %>
                     <% } %>   
@@ -42,7 +42,7 @@
         </ul>  
 
         <form action="/auth/logout" method="GET" >
-            <input type="submit" value="Logout">
+            <input class="logoutBtn" type="submit" value="Logout">
         </form> 
     </main> 
     
