@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // SET CONNECTION STRING & NAME DB IN MONGO
 
-const connectionString = 'mongodb://localhost/barbersapp';
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/barbersapp';
 
 // CONNECTTION TO MONGO VIA MONGOOSE
 

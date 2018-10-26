@@ -64,7 +64,7 @@ app.get('/', async (req, res, next) => {
 
 // SET PORT VARIABLE
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // SERVER CONNECTION
 
