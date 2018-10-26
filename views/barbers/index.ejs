@@ -22,11 +22,11 @@
         <ul>
             <% for(let i = 0; i < barbers.length; i++) { %>
             <li>
-                <a href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
+                <a id="barberIndexName" href='/barbers/<%=barbers[i].id%>'><%= barbers[i].username %></a>
                 <% if(barbers[i].seatStatus == true){ %>
-                    <%= "This Barber Is Available"%>
+                    <p class="barberIndexStats">This Barber Is Available</p>
                 <% }else{ %>
-                    <%= "This Barber Is Busy" %>
+                    <p class="barberIndexStats">This Barber Is Busy</p>
                 <% } %>   
             </li>
             <% } %>
