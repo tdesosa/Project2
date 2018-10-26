@@ -15,21 +15,22 @@
     </header>
 
     <main>
-        <h1><%= barber.username %> Page:</h1>
+        <h1><%= barber.username %>:</h1>
 
         <form action="/barbers/<%=barber._id%>?_method=PUT" method="POST">
             <!-- Username:<input type="text" name="username" value="<%=barber.username%>">
             Password:<input type="text" name="password" value="<%=barber.password%>"> -->
 
             <h3>Click "Update Barber" To Let The Barber Know Your On The Way:</h3>
-            Seat Status:<label class="switch">
-                            <input type="checkbox"  name="seatStatus" >
+            <span id="seatStatus">Seat Status</span>:<label class="switch">
+                            <input type="checkbox"  name="seatStatus"
                             <% if (barber.seatStatus === true){ %>
                                 checked
-                            <% } %>    
+                            <% } %> 
+                            >   
                             <span class="slider round"></span>
                         </label>
-            Rating: <input type="number" name="rating" min="1" max="5">
+            <span id="ratingName">Rating:</span><input id="rating" type="number" name="rating" min="1" max="5"> <br>
             <button id="seatStatusBtn" type="submit">Update Barber</button>
             
 
@@ -38,11 +39,11 @@
         </form>
 
         <form action="/barbers/<%=barber._id%>?_method=DELETE" method="POST" >
-            <input type="submit" value="Delete Barber">
+            <input id="deleteBtn" type="submit" value="Delete Barber">
         </form>
 
         <form action="/auth/logout" method="GET" >
-            <input type="submit" value="Logout">
+            <input class="logoutBtn" type="submit" value="Logout">
         </form>
 
     </main>

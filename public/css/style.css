@@ -5,6 +5,7 @@ body {
     background-position: center;
     color: white;
     font-family: 'Bree Serif', serif;
+    
 }
 .test {
   background-image: url("http://freedombarbersf.com/wp-content/uploads/2015/07/freedombarbersf_banner1.jpg");
@@ -22,7 +23,26 @@ body {
   font-family: 'Bree Serif', serif;
   font-size: 25px;
   margin: 10px
+}
 
+#landingOptions {
+  margin-top: 50px;
+  margin-right: 80px;
+}
+
+.logoutBtn {
+  margin-top: 150px;
+}
+
+#userIndexPic {
+  height: 300px;
+  width: 325px;
+}
+
+#barberIndexPic {
+  height: 300px;
+  width: 325px;
+  margin-right: 300px
 }
 
 
@@ -41,6 +61,8 @@ body {
 }
 
 #barber-link {
+  color: white;
+}
 
 .navbarNavAltMarkup {
   color: white;
@@ -65,18 +87,79 @@ body {
   margin-bottom: 50px
 }
 
-/* LANDING PAGE */
+/* USER INDEX PAGE */
 
-#userIndexPic {
-  height: 300px;
-  width: 325px;
+#userName {
+  font-size: 30px;
+  color: white;
 }
 
-#barberIndexPic {
-  height: 300px;
-  width: 325px;
-  margin-right: 300px
+#barberName {
+  font-size: 30px;
+  color: white;
 }
+
+#barberMessage {
+  font-size: 15px;
+  color: white;
+  background-color: green;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  display: inline-block;
+
+}
+
+/* BARBER SHOW PAGE */
+
+#barberShowStats {
+  font-size: 30px;
+}
+
+#deleteBtn {
+  height: 40px;
+  width: 250px;
+  font-size: 20px;
+}
+
+#seatStatusBtn {
+  height: 40px;
+  width: 250px;
+  font-size: 20px;
+  color: black;
+}
+
+/* BARBER INDEX PAGE*/
+
+#barberIndexName {
+  font-size: 30px;
+  color: white;
+}
+
+.barberIndexStats {
+  font-size: 20px;
+  color: white;
+  background-color: green;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  display: inline-block;
+}
+
+/* BARBER EDIT PAGE */
+
+#rating {
+  font-size: 20px;
+  width: 60px;
+  height: 34px;
+}
+
+#seatStatus {
+  font-size: 25px;
+}
+
+#ratingName {
+  font-size: 25px;
+}
+
 
 /* SEAT STATUS TOGGLE BUTTON */
 

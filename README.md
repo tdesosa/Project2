@@ -23,6 +23,14 @@ TECHNOLOGIES USED:
 - Express Session
 - EJS
 
+UNSOLVED PROBLEMS:
+
+- We didn't anticipate how the users and barbers would log in/register, so they have the same login and register page.
+
+- Because of the previous problem, our users and barbers have no indistinguishable features.
+
+- Bonus content also pending.
+
 
 BONUS:
 
@@ -41,3 +49,7 @@ BONUS:
 9) Favorites system for Barbers.
 
 8) Hair BnB?
+
+Wireframe:
+
+https://drive.google.com/file/d/0B-KYEHp5YWjQbTEwTE9USlhHT3hQNW43OFh1a0lqNWNDamVR/view?usp=sharing

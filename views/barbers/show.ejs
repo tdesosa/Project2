@@ -15,7 +15,7 @@
 
     <main>
         <h1><%= barber.username %></h1>
-        <ul>
+        <ul id="barberShowStats">
             <li>Current Customer:<% if(barber.seatStatus == false){ %>
                 <%= `${user.username} Is On The Way` %>
               <%  }else{ %>
@@ -32,18 +32,14 @@
                 Rating: <%= `${barber.rating} out of 5 stars` %>
             </li>
         </ul>
-        
-
-        <form action='/barbers/<%=barber._id%>?_method=DELETE' method="POST">
-            <input type="submit" value='Delete My Barber Profile'>
-        </form>
+    
 
             <button>
-                <a href='/barbers/<%=barber._id%>/edit'>Set Seat Status / Edit Profile</a>
+                <a id="seatStatusBtn" href='/barbers/<%=barber._id%>/edit'>Set Seat Status</a>
             </button>
         </form>
 
-        <form action="/auth/logout" method="GET" >
+        <form id="logoutBtn" action="/auth/logout" method="GET" >
             <input type="submit" value="Logout">
         </form>
 
